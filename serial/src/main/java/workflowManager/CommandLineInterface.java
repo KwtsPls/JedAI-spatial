@@ -1,6 +1,7 @@
 package workflowManager;
 
 import datareader.AbstractReader;
+import datareader.GeometryCSVReader;
 import enums.BatchAlgorithms;
 import enums.DataType;
 import enums.ProgressiveAlgorithms;
@@ -14,10 +15,10 @@ public class CommandLineInterface {
     public static void main(String[] args) {
         if (args[0].equals("custom")) {
             String sourceFilePath = args[1];
-            AbstractReader sourceReader = DataType.getReader(DataType.CSV,sourceFilePath);
+            AbstractReader sourceReader = new GeometryCSVReader(true, ',', 0, new int[]{}, sourceFilePath);
 
             String targetFilePath = args[2];
-            AbstractReader targetReader = DataType.getReader(DataType.CSV, targetFilePath);
+            AbstractReader targetReader = new GeometryCSVReader(true, ',', 0, new int[]{}, targetFilePath);
 
             String outputFile = args[3];
 
